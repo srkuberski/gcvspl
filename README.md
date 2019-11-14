@@ -123,6 +123,6 @@ functions. *Numerische Mathematik* 31(4). doi:
 
 [5] Lyche, Tom, Larry L. Schumaker, and Kamy Sephehrnoori (1983). Fortran
 subroutines for computing smoothing and interpolating natural splines.
-*Advances in Software Engineering* 5(1). doi:
+*Advances in Engineering Software* 5(1). doi:
 [10.1016/0141-1195(83)90073-6](https://doi.org/10.1016/0141-1195(83)90073-6)
 
