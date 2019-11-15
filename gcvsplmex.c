@@ -2,17 +2,20 @@
  * MEX wrapper for Woltring's GCVSPL function
  *
  * c = gcvsplmex( x, y, m )
+ * c = gcvsplmex( x, y, m, v )
  *
  * INPUT
  * x : independent variables [sorted] (double vector)
  * y : data to be smoothed (double vector)
  * m : spline half order [1-4: linear, cubic, quintic, heptic] (double scalar)
+ * v : prior given variance (double scalar)
  *
  * OUTPUT
  * c : spline coefficients (double vector)
  *
  * REMARKS
  * Compile with 'mex gcvsplmex.c gcvspl.c'.
+ * If no variance v is given, GCV regularization is used.
  * ------------------------------------------------------------------------ */
 
 #include <math.h>
@@ -22,6 +25,7 @@
 #define XIN pr[0]
 #define YIN pr[1]
 #define MIN pr[2]
+#define VIN pr[3]
 
 #define COUT pl[0]
 
@@ -36,6 +40,8 @@ mexFunction( int nl, mxArray ** pl, int nr, const mxArray ** pr )
 		mexErrMsgTxt( "invalid argument: y (double vector)" );
 	if (nr < 3 || !mxIsDouble( MIN ) || !mxIsScalar( MIN ))
 		mexErrMsgTxt( "invalid argument: m (double scalar)" );
+	if (nr >= 4 && (!mxIsDouble( VIN ) || !mxIsScalar( VIN )))
+		mexErrMsgTxt( "invalid argument: v (double scalar)" );
 
 		/* prepare buffers */
 	double * x = mxGetPr( XIN );
@@ -52,8 +58,14 @@ mexFunction( int nl, mxArray ** pl, int nr, const mxArray ** pr )
 
 	long int m = mxGetScalar( MIN );
 	long int k = 1; /* single data set */
-	long int md = 2; /* general cross-validation */
-	double val = 0; /* N/A */
+
+	long int md = 2; /* generalzed cross-validation */
+	double val = 0;
+	if (nr >= 4) /* prior given variance */
+	{
+		md = 3;
+		val = mxGetScalar( VIN );
+	}
 
 	COUT = mxCreateDoubleMatrix( mxGetM( XIN ), mxGetN( XIN ), 0 );
 	double * c = mxGetPr( COUT );

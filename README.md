@@ -35,14 +35,17 @@ Matlab executable with the following calling convention:
 
 ~~~matlab
 % c = gcvsplmex( x, y, m )
+% c = gcvsplmex( x, y, m, v )
 % 
 % INPUT
 % x : independent variables [sorted] (double vector)
 % y : data to be smoothed (double vector)
 % m : spline half order [1-4: linear, cubic, quintic, heptic] (double scalar)
+% v : prior given variance (double scalar)
 %
 % OUTPUT
 % c : spline coefficients (double vector)
+% If no variance v is given, GCV regularization is used.
 ~~~
 
 ## spldermex.c
