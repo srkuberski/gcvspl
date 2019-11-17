@@ -3,10 +3,10 @@
 Stephan R. Kuberski, Department of Linguistics, University of Potsdam,
 November, 2019
 
-This is a version of Woltring's classic generalized, cross-validatory spline
-smoothing and differentiation code [1]. The original Fortran 77 code [2] was
-converted to C using the f2c converter [3]. The resulting C code `gcvspl.c` (as
-well as its Fortran 77 source `gcvspl.f`) is stored here, along with this
+This is a version of Woltring's classic generalized, cross-validatory (GCV)
+spline smoothing and differentiation code [1]. The original Fortran 77 code [2]
+was converted to C using the f2c converter [3]. The resulting C code `gcvspl.c`
+(as well as its Fortran 77 source `gcvspl.f`) is stored here, along with this
 package, for archiving purposes. Please adhere to their original copyright.
 
 To make the code accessible to a wider range of Matlab users the following two
@@ -84,14 +84,14 @@ Matlab executable with the following calling convention:
 ## Example
 
 As an example of usage, consider the following lines of code, which compute the
-(seventh-order) heptic spline values and their first two derivatives (velocity
+(fifth-order) quintic spline values and their first two derivatives (velocity
 and acceleration) for a given set of data points `(x,y)`:
 
 ~~~matlab
-c = gcvsplmex( x, y, 4 ); % compute spline coefficients
-y0 = spldermex( x, c, 4, x, 0 ); % compute spline values at x
-y1 = spldermex( x, c, 4, x, 1 ); % compute first derivatives at x (velocity)
-y2 = spldermex( x, c, 4, x, 2 ); % compute second derivatives at x (acceleration)
+c = gcvsplmex( x, y, 3 ); % compute GCV spline coefficients
+y0 = spldermex( x, c, 3, x, 0 ); % compute spline values at x
+y1 = spldermex( x, c, 3, x, 1 ); % compute first derivatives at x (velocity)
+y2 = spldermex( x, c, 3, x, 2 ); % compute second derivatives at x (acceleration)
 ~~~
 
 In order to run the code above, make sure that the two binaries mentioned
