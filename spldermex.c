@@ -4,14 +4,14 @@
  * y = spldermex( x, c, m, t, n )
  *
  * INPUT
- * x : independent variables [sorted] (double vector)
- * c : spline coefficients (double vector)
+ * x : independent variables [sorted] (double column [N, 1])
+ * c : spline coefficients (double column [N, 1])
  * m : spline half order [1-4: linear, cubic, quintic, heptic] (double scalar)
- * t : evaluation points (double vector)
+ * t : evaluation points (double column [T, 1])
  * n : order of derivative (double scalar)
  *
  * OUTPUT
- * y : spline values or derivatives (double vector)
+ * y : spline values or derivatives (double column [T, 1])
  *
  * REMARKS
  * Compile with 'mex spldermex.c gcvspl.c'.
@@ -34,33 +34,38 @@ mexFunction( int nl, mxArray ** pl, int nr, const mxArray ** pr )
 {
 
 		/* safeguard */
-	if (nr < 1 || !mxIsDouble( XIN ) || (mxGetM( XIN ) != 1 && mxGetN( XIN ) != 1))
-		mexErrMsgTxt( "invalid argument: x (double vector)" );
-	if (nr < 2 || !mxIsDouble( CIN ) || (mxGetM( CIN ) != 1 && mxGetN( CIN ) != 1))
-		mexErrMsgTxt( "invalid argument: c (double vector)" );
+	if (nr < 1 || !mxIsDouble( XIN ) || mxGetN( XIN ) != 1)
+		mexErrMsgTxt( "invalid argument: x (double column [nx, 1])" );
+	long int nx = mxGetM( XIN );
+	double * x = mxGetPr( XIN );
+
+	if (nr < 2 || !mxIsDouble( CIN ) || mxGetM( CIN ) != nx || mxGetN( CIN ) != 1)
+		mexErrMsgTxt( "invalid argument: c (double column [nx, 1])" );
+	double * c = mxGetPr( CIN );
+
 	if (nr < 3 || !mxIsDouble( MIN ) || !mxIsScalar( MIN ))
 		mexErrMsgTxt( "invalid argument: m (double scalar)" );
-	if (nr < 4 || !mxIsDouble( TIN ) || (mxGetM( TIN ) != 1 && mxGetN( TIN ) != 1))
-		mexErrMsgTxt( "invalid argument: t (double vector)" );
+	long int m = mxGetScalar( MIN );
+
+	if (nr < 4 || !mxIsDouble( TIN ) || mxGetN( TIN ) != 1)
+		mexErrMsgTxt( "invalid argument: t (double column [nx, 1])" );
+	long int nt = mxGetM( TIN );
+	double * t = mxGetPr( TIN );
+
 	if (nr < 5 || !mxIsDouble( NIN ) || !mxIsScalar( NIN ))
-		mexErrMsgTxt( "invalid argument: n (double scalar)" );
+		mexErrMsgTxt( "invalid argument: nx (double scalar)" );
+	long int ider = mxGetScalar( NIN );
 
 		/* prepare buffers */
-	long int ider = mxGetScalar( NIN );
-	long int m = mxGetScalar( MIN );
-	long int n = fmax( mxGetM( XIN ), mxGetN( XIN ) );
-	double * t = mxGetPr( TIN );
-	double * x = mxGetPr( XIN );
-	double * c = mxGetPr( CIN );
-	long int l = 0; /* TODO*/
+	long int l = nx;
 	double * q = (double *) mxCalloc( 2*m, sizeof( double ) );
 
 		/* call Woltring's SPLDER */
-	YOUT = mxCreateDoubleMatrix( mxGetM( TIN ), mxGetN( TIN ), 0 );
+	YOUT = mxCreateDoubleMatrix( nt, 1, 0 );
 	double * y = mxGetPr( YOUT );
 
-	for (long int ti = 0; ti < fmax( mxGetM( TIN ), mxGetN( TIN ) ); ++ti)
-		y[ti] = splder_( &ider, &m, &n, &t[ti], x, c, &l, q );
+	for (long int ti = 0; ti < nt; ++ti)
+		y[ti] = splder_( &ider, &m, &nx, &t[ti], x, c, &l, q );
 
 		/* release buffers */
 	mxFree( q );
