@@ -131,7 +131,7 @@ For archiving and documentation purposes, the original Fortran 77 source file (`
 
 If you use this software in your work, please cite it using the following metadata:
 
-Kuberski, Stephan R. (2023). GCV spline smoothing in Matlab [Software]. GitHub. url: github.com/srkuberski/gcvspl
+Kuberski, Stephan R. (2023). GCV spline smoothing in Matlab [Software]. url: github.com/srkuberski/gcvspl
 
 ## References
 
