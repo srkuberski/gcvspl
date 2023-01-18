@@ -2,8 +2,6 @@
 
 This is a Matlab interface to Woltring's classic generalized, cross-validatory (GCV) spline smoothing and differentiation code [1]. Woltring's original Fortran 77 code [2] was converted to C using the f2c converter [3]. Two Matlab MEX wrappers have been implemented to make the code available to a wider range of users.
 
-For archiving and documentation purposes, the original Fortran 77 source file (`gcvspl.f`) is duplicated here, as well as the intermediary C code files (`gcvspl.c`, `gcvspl.h`). Please adhere to their original copyright. Everything else provided in this repository is released to the public domain.
-
 - [Theoretical minimum](#theoretical-minimum)
 - [Matlab interface](#matlab-interface)
 - [Matlab example](#matlab-example)
@@ -45,7 +43,7 @@ mex gcvsplmex.c gcvspl.c
 mex spldermex.c splder.c
 ~~~
 
-Alternatively, you can use the `Makefile` provided here. The resulting binaries `gcvsplmex.mexa64` and `spldermex.mex64` (or similar on non-Unix platforms) are Matlab executables which can be used as is. However
+Alternatively, you can use the `Makefile` provided here. The resulting binaries `gcvsplmex.mexa64` and `spldermex.mex64` (or similar on non-Unix platforms) are Matlab executables which can be used as is. However, the package also provides (yet another and recommend) set of wrappers with additional error handling. Below you will find short documentation on how to use these.
 
 ### Spline construction with `gcvspl`
 
@@ -126,7 +124,7 @@ Note that by specification of more (or less) than `x` evaluation points in the f
 
 ## License
 
-The content of this package is released to the public domain. Woltring's original software is available for unrestricted non-commercial use [2].
+For archiving and documentation purposes, the original Fortran 77 source file (`gcvspl.f`) is duplicated here, as well as the intermediary C code files (`gcvspl.c`, `gcvspl.h`). Please adhere to their original copyright (unrestricted non-commercial use [2]). Everything else provided in this repository is released to the public domain.
 
 ## References
 
