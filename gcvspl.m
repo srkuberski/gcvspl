@@ -10,7 +10,7 @@ function [c, wk] = gcvspl( x, y, m, v, w )
 %
 % OUTPUT
 % c : spline coefficients (double matrix [K, N])
-% wk : GCVSPL work vector (numeric row [1, 6])
+% wk : internal work vector (numeric row [1, 6])
 
 		% safeguard
 	if nargin < 1 || ~isnumeric( x ) || ~isrow( x )
