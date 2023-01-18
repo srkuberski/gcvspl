@@ -17,7 +17,7 @@ $$
 C_p=\sum_{i=1}^nw_i[x_i-s_p(t_i)]^2+p\int_{t=-\infty}^{+\infty}|s_p^{(m)}(t)|^2dt
 $$
 
-- through the regularization parameter $p$, a trade-off can be effectuated between the smootheness of the spline (its $m$ th derivative) and the goodness-of-fit to the given data
+- through the regularization parameter $p$, a trade-off can be effectuated between the smoothness of the spline (its $m$ th derivative) and the goodness-of-fit to the given data
 - for $p=0$, an exactly interpolating spline is obtained; in the limiting case $p\rightarrow\infty$, the spline becomes an $m$ th order (i.e., an $(m-1)$ th degree) polynomial which fits the data in a weighted least-squares sense
 - Woltring[1] implemented ways to estimate the regularization parameter $p$ by generalized cross-validation or from a given, predicted mean squared error
 <!-- -->
@@ -38,7 +38,7 @@ $$
 
 ## Matlab interface
 
-For the construction and evaluation of splines, Woltring's original Fortran code provided two separate functions, `gcvspl` and `splder`. Access to these functions are made available here by the use of two Matlab MEX wrappers. In order to use these wrappers in your Matlab installation, you need to first (and only once) compile them on your computer. The compilation requires the presence of a C/C++ compiler software on your computer (e.g., the GNU Compiler Collection gcc). If you do not know if this is the case or not, please refer to the Matlab documentation on how to install, setup, and test a proper MEX building environment before continuing. Once a C compiler is available on your computer, start Matlab, change to the path where the files of this package are located and run:
+For the construction and evaluation of splines, Woltring's original Fortran code provided two separate functions, `gcvspl` and `splder`. Access to these functions are made available here by the use of two Matlab MEX wrappers. In order to use these wrappers in your Matlab installation, you first (and only once) need to compile them on your computer. The compilation requires the presence of a C/C++ compiler software on your computer (e.g., the GNU Compiler Collection gcc). If you do not know if this is the case or not, please refer to the Matlab documentation on how to install, setup, and test a proper MEX building environment before continuing. Once a C compiler is available on your computer, start Matlab, change to the path where the files of this package are located and run:
 
 ~~~matlab
 mex gcvsplmex.c gcvspl.c
@@ -137,7 +137,7 @@ Kuberski, Stephan R. (2023). GCV spline smoothing in Matlab [Software]. url: git
 
 [1] Woltring, Herman J. (1986). A Fortran package for generalized, cross-validatory spline smoothing and differentiation. *Advances in Engineering Software* 8(2). doi: [10.1016/0141-1195(86)90098-7](https://doi.org/10.1016/0141-1195(86)90098-7).
 
-[2] International Society of Biomechanics. Signal processing software. url: [https\://isbweb.org/software/sigproc.html](https://isbweb.org/software/sigproc.html).  (retrieved in November, 2019).
+[2] International Society of Biomechanics. Signal processing software. url: [https\://isbweb.org/software/sigproc.html](https://isbweb.org/software/sigproc.html). (retrieved in November, 2019).
 
 [3] AT&T Bell Laboratories. A Fortran to C converter. url: [http\://www.netlib.org/f2c/](http://www.netlib.org/f2c/). (retrieved in November, 2019).
 
