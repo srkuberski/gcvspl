@@ -1,6 +1,6 @@
 # GCV spline smoothing in Matlab
 
-This package provides a Matlab interface to Woltring's classic generalized, cross-validatory (GCV) spline smoothing and differentiation code [1]. Woltring's original Fortran 77 code [2] was converted to C using the f2c converter [3]. Two Matlab MEX wrappers have been implemented to make the code available to a wider range of users.
+This repository provides a Matlab interface to Woltring's classic generalized, cross-validatory (GCV) spline smoothing and differentiation code [1]. Woltring's original Fortran 77 code [2] was converted to C using the f2c converter [3]. Two Matlab MEX wrappers have been implemented to make the code available to a wider range of users.
 
 - [Theoretical minimum](#theoretical-minimum)
 - [Matlab interface](#matlab-interface)
@@ -38,7 +38,7 @@ $$
 
 ## Matlab interface
 
-For the construction and evaluation of splines, Woltring's original Fortran code provided two separate functions, `gcvspl` and `splder`. Access to these functions are made available here by the use of two Matlab MEX wrappers. In order to use these wrappers in your Matlab installation, you first (and only once) need to compile them on your computer. The compilation requires the presence of a C/C++ compiler software on your computer (e.g., the GNU Compiler Collection gcc). If you do not know if this is the case or not, please refer to the Matlab documentation on how to install, setup, and test a proper MEX building environment before continuing. Once a C compiler is available on your computer, start Matlab, change to the path where the files of this package are located and run:
+For the construction and evaluation of splines, Woltring's original Fortran code provided two separate functions, `gcvspl` and `splder`. Access to these functions are made available here by the use of two Matlab MEX wrappers. In order to use these wrappers in your Matlab installation, you first (and only once) need to compile them on your computer. The compilation requires the presence of a C/C++ compiler software on your computer (e.g., the GNU Compiler Collection gcc). If you do not know if this is the case or not, please refer to the Matlab documentation on how to install, setup, and test a proper MEX building environment before continuing. Once a C compiler is available on your computer, start Matlab, change to the path where the files of this repository are located and run:
 
 ~~~matlab
 mex -v gcvsplmex.c gcvspl.c
@@ -46,7 +46,7 @@ mex -v spldermex.c splder.c
 ~~~
 *Code*: Matlab commands to compile the two MEX wrappers
 
-Alternatively, you can use the `Makefile` provided here. The resulting binaries `gcvsplmex.mexa64` and `spldermex.mex64` (or similar on non-Unix platforms) are Matlab executables which can be used as is. However, this package also provides (yet another) set of wrappers with additional error handling. The use of its functions is recommended. Below you will find short documentation for each of these.
+Alternatively, you can use the `Makefile` provided here. The resulting binaries `gcvsplmex.mexa64` and `spldermex.mex64` (or similar on non-Unix platforms) are Matlab executables which can be used as is. However, this repository also provides (yet another) set of wrappers with additional error handling. The use of its functions is recommended. Below you will find short documentation for each of these.
 
 ### Spline construction with `gcvspl`
 
