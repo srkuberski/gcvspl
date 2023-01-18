@@ -23,7 +23,7 @@ $$
 <!-- -->
 - using a basis of B-splines $B_i(t)$, the resulting spline can be written as the linear combination $s_p(t)=\sum_{i=1}^nc_{p,i}B_i(t)$ with spline coefficients $c_{p,i}$
 - the spline polynomials have order $\le2m$ between the knots and order $m$ outside the knot range
-- the polynomials are continuous at the knots up to and including the $(2m-2)$th derivative with vanishing $m$th and higher derivatives at the terminal knots $t_1$ and $t_n$
+- the polynomials are continuous at the knots up to and including the $(2m-2)$ th derivative with vanishing $m$ th and higher derivatives at the terminal knots $t_1$ and $t_n$
 
 |                                         | linear | cubic | quintic | heptic |
 |----------------------------------------:|:------:|:-----:|:-------:|:------:|
