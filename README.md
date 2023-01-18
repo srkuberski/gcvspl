@@ -137,9 +137,9 @@ Kuberski, Stephan R. (2023). GCV spline smoothing in Matlab [Software]. url: git
 
 [1] Woltring, Herman J. (1986). A Fortran package for generalized, cross-validatory spline smoothing and differentiation. *Advances in Engineering Software* 8(2). doi: [10.1016/0141-1195(86)90098-7](https://doi.org/10.1016/0141-1195(86)90098-7).
 
-[2] International Society of Biomechanics. Signal processing software. url: [https\://isbweb.org/software/sigproc.html](https://isbweb.org/software/sigproc.html). (retrieved in November, 2019).
+[2] International Society of Biomechanics. Signal processing software. url: [https\://isbweb.org/software/sigproc.html](https://isbweb.org/software/sigproc.html). (retrieved in November 2019).
 
-[3] AT&T Bell Laboratories. A Fortran to C converter. url: [http\://www.netlib.org/f2c/](http://www.netlib.org/f2c/). (retrieved in November, 2019).
+[3] AT&T Bell Laboratories. A Fortran to C converter. url: [http\://www.netlib.org/f2c/](http://www.netlib.org/f2c/). (retrieved in November 2019).
 
 [4] Craven, Peter and Grace Wahba (1979). Smoothing noisy data with spline functions. *Numerische Mathematik* 31(4). doi: [10.1007/BF01404567](https://doi.org/10.1007/BF01404567)
 
