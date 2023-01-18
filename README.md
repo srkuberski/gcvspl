@@ -119,15 +119,15 @@ c = gcvspl( x, y, 3 ); % compute spline coefficients
 y0 = splder( x, c, 3, x, 0 ); % compute spline values
 y1 = splder( x, c, 3, x, 1 ); % compute first derivatives (velocity)
 y2 = splder( x, c, 3, x, 2 ); % compute second derivatives (acceleration)
-z = splzer( x, c, 3, 1 ); % compute zeros in the first derivative (velocity)
+z = splzer( x, c, 3, 1 ); % compute zero crossings of the first derivative
 ~~~
 *Code*: A simple example on how to use the splines interface
 
-Note that by specification of more (or less) than `x` evaluation points in the fourth argument to `splder`, re-sampling of the original data is possible.
+Note that by specification of more (or less) than `x` evaluation points in the fourth argument to the function `splder`, re-sampling of the original data is possible.
 
 ## License
 
-For archiving and documentation purposes, the original Fortran 77 source file (`gcvspl.f`) is duplicated here, as well as the intermediary C code files (`gcvspl.c`, `gcvspl.h`). Please adhere to their original copyright (unrestricted non-commercial use [2]). Everything else provided in this repository is released to the public domain.
+For archiving and documentation purposes, the original Fortran 77 source file (`gcvspl.f`) is duplicated here, as well as the intermediary C code files (`gcvspl.c`, `gcvspl.h`). Please adhere to their original copyright [2]. All other software provided with this repository is released to the public domain.
 
 If you use this software in your work, please cite it using the following metadata:
 
