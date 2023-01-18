@@ -137,11 +137,11 @@ Kuberski, Stephan R. (2023). GCV spline smoothing in Matlab [Software]. url: git
 
 [1] Woltring, Herman J. (1986). A Fortran package for generalized, cross-validatory spline smoothing and differentiation. *Advances in Engineering Software* 8(2). doi: [10.1016/0141-1195(86)90098-7](https://doi.org/10.1016/0141-1195(86)90098-7).
 
-[2] International Society of Biomechanics. Signal processing software. url: [https\://isbweb.org/software/sigproc.html](https://isbweb.org/software/sigproc.html). (retrieved in November 2019).
+[2] International Society of Biomechanics. Signal processing software. url: [isbweb.org/software/sigproc.html](https://isbweb.org/software/sigproc.html). (retrieved in November 2019).
 
-[3] AT&T Bell Laboratories. A Fortran to C converter. url: [http\://www.netlib.org/f2c/](http://www.netlib.org/f2c/). (retrieved in November 2019).
+[3] AT&T Bell Laboratories. A Fortran to C converter. url: [www.netlib.org/f2c](http://www.netlib.org/f2c/). (retrieved in November 2019).
 
 [4] Craven, Peter and Grace Wahba (1979). Smoothing noisy data with spline functions. *Numerische Mathematik* 31(4). doi: [10.1007/BF01404567](https://doi.org/10.1007/BF01404567)
 
-[5] Lyche, Tom, Larry L. Schumaker, and Kamy Sephehrnoori (1983). Fortran subroutines for computing smoothing and interpolating natural splines.  *Advances in Engineering Software* 5(1). doi: [10.1016/0141-1195(83)90073-6](https://doi.org/10.1016/0141-1195(83)90073-6)
+[5] Lyche, Tom, Larry L. Schumaker, and Kamy Sephehrnoori (1983). Fortran subroutines for computing smoothing and interpolating natural splines. *Advances in Engineering Software* 5(1). doi:[10.1016/0141-1195(83)90073-6](https://doi.org/10.1016/0141-1195(83)90073-6)
 
