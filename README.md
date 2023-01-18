@@ -41,8 +41,8 @@ $$
 For the construction and evaluation of splines, Woltring's original Fortran code provided two separate functions, `gcvspl` and `splder`. Access to these functions are made available here by the use of two Matlab MEX wrappers. In order to use these wrappers in your Matlab installation, you first (and only once) need to compile them on your computer. The compilation requires the presence of a C/C++ compiler software on your computer (e.g., the GNU Compiler Collection gcc). If you do not know if this is the case or not, please refer to the Matlab documentation on how to install, setup, and test a proper MEX building environment before continuing. Once a C compiler is available on your computer, start Matlab, change to the path where the files of this package are located and run:
 
 ~~~matlab
-mex gcvsplmex.c gcvspl.c
-mex spldermex.c splder.c
+mex -v gcvsplmex.c gcvspl.c
+mex -v spldermex.c splder.c
 ~~~
 *Code*: Matlab commands to compile the two MEX wrappers
 
