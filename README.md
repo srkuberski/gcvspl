@@ -127,7 +127,7 @@ Note that by specification of more (or less) than `x` evaluation points in the f
 
 ## License
 
-For archiving and documentation purposes, the original Fortran 77 source file (`gcvspl.f`) is duplicated here, as well as the intermediary C code files (`gcvspl.c`, `gcvspl.h`). Please adhere to their original copyright [2]. All other software provided with this repository is released to the public domain.
+For archiving and documentation purposes, the original Fortran 77 source file (`gcvspl.f`) is duplicated here, as well as the intermediary C code files (`gcvspl.c`, `gcvspl.h`). Please adhere to their original copyright (unrestricted non-commercial use) [2]. All other software provided with this repository is released to the public domain.
 
 If you use this software in your work, please cite it using the following metadata:
 
