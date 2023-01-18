@@ -17,7 +17,7 @@ $$
 C_p=\sum_{i=1}^nw_i[x_i-s_p(t_i)]^2+p\int_{t=-\infty}^{+\infty}|s_p^{(m)}(t)|^2dt
 $$
 
-- through the regularization parameter $p$, a trade-off can be effectuated between the smootheness of the spline (its $m$th derivative) and the goodness-of-fit to the given data
+- through the regularization parameter $p$, a trade-off can be effectuated between the smootheness of the spline (its $m$ th derivative) and the goodness-of-fit to the given data
 - for $p=0$, an exactly interpolating spline is obtained; in the limiting case $p\rightarrow\infty$, the spline becomes an $m$ th order (i.e., an $(m-1)$ th degree) polynomial which fits the data in a weighted least-squares sense
 - Woltring[1] implemented ways to estimate the regularization parameter $p$ by generalized cross-validation (GCV) or from a given, predicted mean squared error (MSE)
 - the spline polynomials have order $\le2m$ between the knots and order $m$ outside the knot range
