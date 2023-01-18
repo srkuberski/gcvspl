@@ -20,8 +20,7 @@ $$
 - through the regularization parameter $p$, a trade-off can be effectuated between the smootheness of the spline (its $m$ th derivative) and the goodness-of-fit to the given data
 - for $p=0$, an exactly interpolating spline is obtained; in the limiting case $p\rightarrow\infty$, the spline becomes an $m$ th order (i.e., an $(m-1)$ th degree) polynomial which fits the data in a weighted least-squares sense
 - Woltring[1] implemented ways to estimate the regularization parameter $p$ by generalized cross-validation (GCV) or from a given, predicted mean squared error (MSE)
-
-
+<!-- -->
 - using a basis of B-splines $B_i(t)$, the resulting spline can be written as the linear combination $s_p(t)=\sum_{i=1}^nc_{p,i}B_i(t)$ with spline coefficients $c_{p,i}$
 - the spline polynomials have order $\le2m$ between the knots and order $m$ outside the knot range
 - the polynomials are continuous at the knots up to and including the $(2m-2)$th derivative with vanishing $m$th and higher derivatives at the terminal knots $t_1$ and $t_n$
