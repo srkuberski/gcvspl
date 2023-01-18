@@ -46,7 +46,7 @@ mex -v spldermex.c splder.c
 ~~~
 *Code*: Matlab commands to compile the two MEX wrappers
 
-Alternatively, you can use the `Makefile` provided here. The resulting binaries `gcvsplmex.mexa64` and `spldermex.mex64` (or similarly named on non-Unix platforms) are Matlab executables which can be used as is. However, this repository also provides (yet another) set of wrappers with additional error handling. The use of its functions is recommended. Below you will find short documentation for each of these.
+Alternatively, you can use the `Makefile` provided here. The resulting binaries `gcvsplmex.mexa64` and `spldermex.mex64` (or similarly named on non-Unix platforms) are Matlab executables which can be used as is. However, this repository also provides (yet another) set of wrappers with additional error handling. The use of these wrappers is recommended. Below you will find short documentation for each of them.
 
 ### Spline construction with `gcvspl`
 
