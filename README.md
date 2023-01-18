@@ -1,6 +1,6 @@
 # GCV spline smoothing in Matlab
 
-This is a Matlab interface to Woltring's classic generalized, cross-validatory (GCV) spline smoothing and differentiation code [1]. Woltring's original Fortran 77 code [2] was converted to C using the f2c converter [3]. Two Matlab MEX wrappers have been implemented to make the code available to a wider range of users.
+This package provides a Matlab interface to Woltring's classic generalized, cross-validatory (GCV) spline smoothing and differentiation code [1]. Woltring's original Fortran 77 code [2] was converted to C using the f2c converter [3]. Two Matlab MEX wrappers have been implemented to make the code available to a wider range of users.
 
 - [Theoretical minimum](#theoretical-minimum)
 - [Matlab interface](#matlab-interface)
