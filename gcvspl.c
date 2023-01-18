@@ -429,7 +429,7 @@ L50:
 L60:
     gf3 = splc_(m, n, k, &y[y_offset], ny, &wx[1], &wy[1], md, val, &r3, &
 	    c_b6, &c__[c_offset], nc, &wk[1], &wk[ib], &wk[iwe], &el, &wk[7]);
-    if (gf3 > gf2) {
+    if (gf3 >= gf2) {
 	goto L70;
     }
 /* Least-squares polynomial */

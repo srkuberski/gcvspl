@@ -1,13 +1,14 @@
 /* --------------------------------------------------------------------------
  * MEX wrapper for Woltring's GCVSPL function
  *
- * [c, wk] = gcvsplmex( x, y, m, v )
+ * [c, wk] = gcvsplmex( x, y, m, v, w )
  *
  * INPUT
  * x : independent variables [sorted] (double column [N, 1])
  * y : data to be smoothed (double matrix [N, K])
  * m : spline half order [1-4: linear, cubic, quintic, heptic] (double scalar)
  * v : prior given variance [negative for cross-validation] (double scalar)
+ * w : weight factors (double column [N, 1])
  *
  * OUTPUT
  * c : spline coefficients (double matrix [N, K])
@@ -25,6 +26,7 @@
 #define YIN pr[1]
 #define MIN pr[2]
 #define VIN pr[3]
+#define WIN pr[4]
 
 #define COUT pl[0]
 #define WKOUT pl[1]
@@ -52,11 +54,12 @@ mexFunction( int nl, mxArray ** pl, int nr, const mxArray ** pr )
 		mexErrMsgTxt( "invalid argument: v (double scalar)" );
 	double val = mxGetScalar( VIN );
 
+	if (nr < 5 || !mxIsDouble( WIN ) || mxGetN( WIN ) != 1 || mxGetM( WIN ) != n)
+		mexErrMsgTxt( "invalid argument: w (double row [N, 1])" );
+	double * wx = mxGetPr( WIN );
+
 		/* prepare buffers */
-	double * wx = (double *) mxCalloc( n, sizeof( double ) ); /* uniform weights */
-	double * wy = (double *) mxCalloc( k, sizeof( double ) );
-	for (long int wi = 0; wi < n; ++wi )
-		wx[wi] = 1;
+	double * wy = (double *) mxCalloc( k, sizeof( double ) ); /* uniform weights across dimensions */
 	for (long int wi = 0; wi < k; ++wi )
 		wy[wi] = 1;
 
@@ -79,7 +82,6 @@ mexFunction( int nl, mxArray ** pl, int nr, const mxArray ** pr )
 		wkp[wi] = wk[wi];
 
 		/* release buffers */
-	mxFree( wx );
 	mxFree( wy );
 	mxFree( wk );
 
