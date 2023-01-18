@@ -38,14 +38,15 @@ $$
 
 ## Matlab interface
 
-For the construction and evaluation of splines, Woltring's original Fortran code provided two separate functions, `gcvspl` and `splder`. Access to these functions are made available here by the use of two corresponding MEX wrappers. In order to use these wrappers with your Matlab installation, you need to first (and only once) compile them on your computer. The compilation requires the presence of a C/C++ compiler software on your computer (e.g., the GNU Compiler Collection gcc). If you do not know if this is the case or not, please refer to the Matlab documentation on how to install, setup, and test a proper MEX building environment before. Once a C compiler is available on your computer, start Matlab, change to the path where the files of this package are located and run:
+For the construction and evaluation of splines, Woltring's original Fortran code provided two separate functions, `gcvspl` and `splder`. Access to these functions are made available here by the use of two Matlab MEX wrappers. In order to use these wrappers in your Matlab installation, you need to first (and only once) compile them on your computer. The compilation requires the presence of a C/C++ compiler software on your computer (e.g., the GNU Compiler Collection gcc). If you do not know if this is the case or not, please refer to the Matlab documentation on how to install, setup, and test a proper MEX building environment before continuing. Once a C compiler is available on your computer, start Matlab, change to the path where the files of this package are located and run:
 
 ~~~matlab
 mex gcvsplmex.c gcvspl.c
 mex spldermex.c splder.c
 ~~~
+*Code*: Matlab commands to compile the two MEX wrappers
 
-Alternatively, you can use the `Makefile` provided here. The resulting binaries `gcvsplmex.mexa64` and `spldermex.mex64` (or similar on non-Unix platforms) are Matlab executables which can be used as is. However, this package also provides (yet another) set of wrappers with additional error handling. The use of its wrapper functions is recommended. Below you will find short documentation for each of these.
+Alternatively, you can use the `Makefile` provided here. The resulting binaries `gcvsplmex.mexa64` and `spldermex.mex64` (or similar on non-Unix platforms) are Matlab executables which can be used as is. However, this package also provides (yet another) set of wrappers with additional error handling. The use of its functions is recommended. Below you will find short documentation for each of these.
 
 ### Spline construction with `gcvspl`
 
@@ -111,7 +112,7 @@ The `splzer` function computes the location (and sign) of zero crossings of a B-
 
 ## Matlab example
 
-As an example of usage, consider the following lines of code, which compute the (fifth-order) quintic spline values and their first two derivatives (velocity and acceleration) for a given set of data points `(x,y)`:
+As an example of usage, consider the following lines of code, which compute the (fifth-order) quintic spline values and their first two derivatives (velocity and acceleration) of a given set of data points `(x,y)`:
 
 ~~~matlab
 c = gcvspl( x, y, 3 ); % compute spline coefficients
@@ -120,7 +121,7 @@ y1 = splder( x, c, 3, x, 1 ); % compute first derivatives (velocity)
 y2 = splder( x, c, 3, x, 2 ); % compute second derivatives (acceleration)
 z = splzer( x, c, 3, 1 ); % compute zeros in the first derivative (velocity)
 ~~~
-*Code*: A simple example of using the splines interface
+*Code*: A simple example on how to use the splines interface
 
 Note that by specification of more (or less) than `x` evaluation points in the fourth argument to `splder`, re-sampling of the original data is possible.
 
@@ -128,7 +129,9 @@ Note that by specification of more (or less) than `x` evaluation points in the f
 
 For archiving and documentation purposes, the original Fortran 77 source file (`gcvspl.f`) is duplicated here, as well as the intermediary C code files (`gcvspl.c`, `gcvspl.h`). Please adhere to their original copyright (unrestricted non-commercial use [2]). Everything else provided in this repository is released to the public domain.
 
-If you use this software in your work, please cite it using the following metadata: Kuberski, Stephan R. (2023). GCV spline smoothing in Matlab [Software]. GitHub. url: github.com/srkuberski/gcvspl
+If you use this software in your work, please cite it using the following metadata:
+
+Kuberski, Stephan R. (2023). GCV spline smoothing in Matlab [Software]. GitHub. url: github.com/srkuberski/gcvspl
 
 ## References
 
