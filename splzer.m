@@ -1,19 +1,28 @@
 function [z, s] = splzer( x, c, m, n, xmin, xmax, ofs )
-% spline zeros
+% compute spline zeros
 %
 % [z, s] = splzer( x, c, m, n, xmin = min( x ), xmax = max( x ), ofs = 0 )
 %
 % INPUT
-% x : independent variables [sorted] (numeric row [1, N])
+% x : independent variables (numeric row [1, N])
 % c : spline coefficients (numeric row [1, N])
-% m : spline half order [1-4: linear, cubic, quintic, heptic] (numeric scalar)
-% n : order of derivative [0 for spline values] (numeric scalar)
+% m : spline half order (numeric scalar)
+% n : order of derivative (numeric scalar)
 % xmin, xmax : search interval (numeric scalar)
-% ofs : derivative offset (numeric scalar)
+% ofs : spline offset (numeric scalar)
 %
 % OUTPUT
-% z : zeros of the spline (numeric row [1, Z])
-% s : signs of the zeros (numeric row [1, Z])
+% z : zero locations (numeric row [1, Z])
+% s : zero signs (numeric row [1, Z])
+%
+% REMARKS
+% - array of independent variables x must be sorted
+% - spline half orders m = 1, 2, 3, 4 correspond to linear, cubic, quintic, heptic splines (etc.)
+% - physically, orders of derivate n = 0, 1, 2 correspond to position, velocity, acceleration values (etc.)
+% - this function requires the presence of the Curve Fitting Toolbox
+%
+% REQUIREMENTS
+% - Matlab's Curve Fitting Toolbox must be installed on your computer
 
 		% safeguard
 	if nargin < 1 || ~isnumeric( x ) || ~isrow( x )
@@ -25,11 +34,11 @@ function [z, s] = splzer( x, c, m, n, xmin, xmax, ofs )
 		error( 'invalid argument: c (numeric row [1, N])' );
 	end
 
-	if nargin < 3 || ~isnumeric( m ) || ~isscalar( m ) || ~ismember( m, 1:4 )
+	if nargin < 3 || ~isnumeric( m ) || ~isscalar( m )
 		error( 'invalid argument: m (numeric scalar)' );
 	end
 
-	if nargin < 4 || ~isnumeric( n ) || ~isscalar( n ) || ~ismember( n, 0:2*m-1 )
+	if nargin < 4 || ~isnumeric( n ) || ~isscalar( n )
 		error( 'invalid argument: n (numeric scalar)' );
 	end
 
@@ -55,19 +64,17 @@ function [z, s] = splzer( x, c, m, n, xmin, xmax, ofs )
 	end
 
 		% adjust search interval
-	imin = x(1+2*m-2);
-	imax = x(end-2*m-2);
-	xmin = aux.clamp( xmin, imin, imax );
-	xmax = aux.clamp( xmax, imin, imax );
+	xmin = max( xmin, x(1+2*m-2) );
+	xmax = min( xmax, x(end-2*m-2) );
 
-		% zeros
+		% compute zero locations
 	sp = fnder( spmak( augknt( x, m+1 ), c ), n );
 	sp.coefs = sp.coefs+ofs;
 
 	z = fnzeros( sp, [xmin, xmax] );
 	z = transpose( unique( z(:) ) );
 
-		% signs
+		% compute zero signs
 	sp = fnder( sp, 1 );
 	s = sign( fnval( sp, z ) );
 

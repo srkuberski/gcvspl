@@ -53,60 +53,89 @@ Alternatively, you can use the `Makefile` provided here. The resulting binaries 
 The `gcvspl` function computes a natural B-spline using the generalized cross-validation and mean-squared prediction error criteria of Craven & Wahba [4]. The model assumes uncorrelated, additive noise and essentially smooth, underlying functions. The independent coordinates may be spaced non-equidistantly.
 
 ~~~matlab
-% c = gcvspl( x, y, m, v, w=ones )
+% compute spline coefficients
+%
+% c = gcvspl( x, y, m, v, w = ones )
 % 
 % INPUT
-% x : independent variables [sorted] (double row [1, N])
-% y : data to be smoothed (double matrix [K, N])
-% m : spline half order [1-4: linear, cubic, quintic, heptic] (double scalar)
-% v : prior given variance [negative: GCV regularization] (double scalar)
-% w : weight factors (double row [1, N])
+% x : independent variables (numeric row [1, N])
+% y : data to be smoothed (numeric matrix [K, N])
+% m : spline half order (numeric scalar)
+% v : prior given variance [negative: GCV regularization] (numeric scalar)
+% w : weight factors (numeric row [1, N])
 %
 % OUTPUT
-% c : spline coefficients (double matrix [K, N])
+% c : spline coefficients (numeric matrix [K, N])
 % wk : internal work vector (numeric row [1, 6])
+%
+% REMARKS
+% - array of independent variables x must be sorted
+% - spline half orders m = 1, 2, 3, 4 correspond to linear, cubic, quintic, heptic splines (etc.)
+% - negative prior given variance v results in generalized, cross-validatory splines
+%
+% REQUIREMENTS
+% - the binary gcvsplmex must be accessible from Matlab's search path
 ~~~
 *Code*: Type `help gcvspl` to see this in your Matlab installation
 
 ### Spline evaluation with `splder`
 
-The `splder` function computes the values of a B-spline or its derivatives at selected evaluation points. Woltring's underlying code is an adoption of Lyche et al. [5].
+The `splder` function computes the values of a B-spline at selected evaluation points. Woltring's underlying code is an adoption of Lyche et al. [5].
 
 ~~~matlab
+% compute spline values
+%
 % y = splder( x, c, m, t, n )
 %
 % INPUT
-% x : independent variables [sorted] (numeric row [1, N])
+% x : independent variables (numeric row [1, N])
 % c : spline coefficients (numeric matrix [K, N])
-% m : spline half order [1-4: linear, cubic, quintic, heptic] (numeric scalar)
+% m : spline half order (numeric scalar)
 % t : evaluation points (numeric row [1, T])
-% n : order of derivative [0 for spline values] (numeric scalar)
+% n : order of derivative (numeric scalar)
 %
 % OUTPUT
-% y : spline values or derivatives (numeric matrix [K, T])
+% y : spline values (numeric matrix [K, T])
+%
+% REMARKS
+% - array of independent variables x must be sorted
+% - spline half orders m = 1, 2, 3, 4 correspond to linear, cubic, quintic, heptic splines (etc.)
+% - physically, orders of derivate n = 0, 1, 2 correspond to position, velocity, acceleration values (etc.)
+%
+% REQUIREMENTS
+% - the binary spldermex must be accessible from Matlab's search path
 ~~~
 *Code*: Type `help splder` to see this in your Matlab installation
 
 ### Zero crossings with `splzer`
 
-The `splzer` function computes the location (and sign) of zero crossings of a B-spline or its derivatives.
+The `splzer` function computes the location (and sign) of zero crossings of a B-spline.
 
 ~~~matlab
-% spline zeros
+% compute spline zeros
 %
 % [z, s] = splzer( x, c, m, n, xmin = min( x ), xmax = max( x ), ofs = 0 )
 %
 % INPUT
-% x : independent variables [sorted] (numeric row [1, N])
+% x : independent variables (numeric row [1, N])
 % c : spline coefficients (numeric row [1, N])
-% m : spline half order [1-4: linear, cubic, quintic, heptic] (numeric scalar)
-% n : order of derivative [0 for spline values] (numeric scalar)
+% m : spline half order (numeric scalar)
+% n : order of derivative (numeric scalar)
 % xmin, xmax : search interval (numeric scalar)
-% ofs : derivative offset (numeric scalar)
+% ofs : spline offset (numeric scalar)
 %
 % OUTPUT
-% z : zeros of the spline (numeric row [1, Z])
-% s : signs of the zeros (numeric row [1, Z])
+% z : zero locations (numeric row [1, Z])
+% s : zero signs (numeric row [1, Z])
+%
+% REMARKS
+% - array of independent variables x must be sorted
+% - spline half orders m = 1, 2, 3, 4 correspond to linear, cubic, quintic, heptic splines (etc.)
+% - physically, orders of derivate n = 0, 1, 2 correspond to position, velocity, acceleration values (etc.)
+% - this function requires the presence of the Curve Fitting Toolbox
+%
+% REQUIREMENTS
+% - Matlab's Curve Fitting Toolbox must be installed on your computer
 ~~~
 *Code*: Type `help splzer` to see this in your Matlab installation
 
