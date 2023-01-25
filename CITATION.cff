@@ -2,7 +2,7 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: GCV spline smoothing
+title: GCV spline smoothing in Matlab
 message: >-
   If you use this software, please cite it using the
   metadata from this file.
@@ -15,6 +15,9 @@ authors:
       University of Potsdam, Department of Linguistics and
       Cognitive Sciences
     orcid: 'https://orcid.org/0000-0003-4811-1263'
+identifiers:
+  - type: url
+  value: "github.com/srkuberski/gcvspl"
 keywords:
   - signal smoothing
   - signal differentiation
